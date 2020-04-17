@@ -1,5 +1,5 @@
 name = "cloudflare"
-type = "javascript"
+type = "webpack"
 account_id = "3dcfd697425ad4ac9415a10fcf52836d"
 workers_dev = true
 route = ""
