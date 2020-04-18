@@ -1,11 +1,9 @@
-const Router = require('./router')
-
 addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
+event.respondWith(handleRequest(event.request))
 })
 
 async function handleRequest(request) {
-  try {
+try {
 	let url = new URL("https://cfw-takehome.developers.workers.dev/api/variants")
 	let req = new Request(url)
 	let div = 0
@@ -24,7 +22,7 @@ async function handleRequest(request) {
 		})
 		return res
 	}
-  catch (err) {
-    return new Response(err)
-  }
+catch (err) {
+	return new Response(err)
+}
 }
