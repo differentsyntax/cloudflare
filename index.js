@@ -6,16 +6,24 @@ addEventListener('fetch', event => {
 
 async function handleRequest(request) {
   try {
-    let div = Math.random()
-    let url = ""
-    if (div < 0.5) {
-	url = "https://cfw-takehome.developers.workers.dev/variants/1"
-    }
-    else {
-	url = "https://cfw-takehome.developers.workers.dev/variants/2"
-    }
-    return fetch(url)
-  }
+	let url = new URL("https://cfw-takehome.developers.workers.dev/api/variants")
+	let req = new Request(url)
+	let div = 0
+	let res = fetch(req)
+			.then(response => response.json())
+			.then(data => {
+				div = Math.random()
+				if (div < 0.5) {
+						url = data.variants[0]
+						
+				}
+				else {
+						url = data.variants[1]
+				}
+				return fetch(url)
+		})
+		return res
+	}
   catch (err) {
     return new Response(err)
   }
